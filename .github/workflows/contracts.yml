@@ -1,0 +1,80 @@
+name: Verify public contracts
+on:
+  push:
+    branches: [main, sync/contracts]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - id: snapshot
+        run: |
+          if test -f .oipivot-contracts.json; then
+            echo 'present=true' >> "$GITHUB_OUTPUT"
+          elif test -f go.mod || test -n "$(git ls-files '*.proto' '*.pb.go')"; then
+            echo 'Public contract snapshot metadata is missing' >&2
+            exit 1
+          fi
+      - uses: actions/setup-go@v5
+        if: steps.snapshot.outputs.present == 'true'
+        with:
+          go-version-file: go.mod
+          cache: false
+      - uses: actions/setup-node@v4
+        if: steps.snapshot.outputs.present == 'true'
+        with:
+          node-version: '24'
+      - if: steps.snapshot.outputs.present == 'true'
+        run: |
+          buf_version=$(jq -er '.toolchain.BUF_VERSION' .oipivot-contracts.json)
+          go_version=$(jq -er '.toolchain.PROTOC_GEN_GO_VERSION' .oipivot-contracts.json)
+          grpc_version=$(jq -er '.toolchain.PROTOC_GEN_GO_GRPC_VERSION' .oipivot-contracts.json)
+          for version in "$buf_version" "$go_version" "$grpc_version"; do
+            [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || exit 1
+          done
+          npm install --prefix "$RUNNER_TEMP/buf" --no-save --no-audit --no-fund "@bufbuild/buf@$buf_version"
+          go install "google.golang.org/protobuf/cmd/protoc-gen-go@v$go_version"
+          go install "google.golang.org/grpc/cmd/protoc-gen-go-grpc@v$grpc_version"
+          echo "$RUNNER_TEMP/buf/node_modules/.bin" >> "$GITHUB_PATH"
+          echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+      - if: steps.snapshot.outputs.present == 'true'
+        run: |
+          buf lint
+          if git cat-file -e origin/main:go.mod 2>/dev/null && [[ "$GITHUB_REF" != refs/tags/* ]]; then
+            mkdir "$RUNNER_TEMP/base"
+            git archive origin/main | tar -x -C "$RUNNER_TEMP/base"
+            buf breaking --against "$RUNNER_TEMP/base"
+          fi
+          git ls-files -z '*.pb.go' | xargs -0 -r rm --
+          buf generate
+          test -z "$(git status --porcelain)" || { git status --short; exit 1; }
+          go build -mod=readonly ./...
+  open-pr:
+    needs: verify
+    if: github.event_name == 'push' && github.ref == 'refs/heads/sync/contracts'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - run: |
+          current=$(gh api "repos/$GH_REPO/git/ref/heads/sync/contracts" --jq .object.sha)
+          if test "$current" != "$GITHUB_SHA"; then exit 0; fi
+          existing=$(gh pr list --base main --head sync/contracts --state open --json number --jq '.[0].number // empty')
+          if test -n "$existing"; then
+            gh pr view "$existing" --json url --jq .url
+          else
+            gh pr create --base main --head sync/contracts --title 'Update public Protobuf contracts' \
+              --body 'Synchronizes the reviewed platform contract snapshot. The snapshot records its source revision, toolchain and digest. Public verification regenerates the Go bindings and checks compatibility with main.'
+          fi
