@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.2
 // - protoc             (unknown)
-// source: oipivot/audit/v1/audit.proto
+// source: base/audit/v1/service.proto
 
 package auditv1
 
@@ -199,5 +199,5 @@ var AuditService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "oipivot/audit/v1/audit.proto",
+	Metadata: "base/audit/v1/service.proto",
 }

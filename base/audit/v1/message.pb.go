@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        (unknown)
-// source: oipivot/audit/v1/audit.proto
+// source: base/audit/v1/message.proto
 
 package auditv1
 
@@ -32,7 +32,7 @@ type BizCall struct {
 
 func (x *BizCall) Reset() {
 	*x = BizCall{}
-	mi := &file_oipivot_audit_v1_audit_proto_msgTypes[0]
+	mi := &file_base_audit_v1_message_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -44,7 +44,7 @@ func (x *BizCall) String() string {
 func (*BizCall) ProtoMessage() {}
 
 func (x *BizCall) ProtoReflect() protoreflect.Message {
-	mi := &file_oipivot_audit_v1_audit_proto_msgTypes[0]
+	mi := &file_base_audit_v1_message_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -57,7 +57,7 @@ func (x *BizCall) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BizCall.ProtoReflect.Descriptor instead.
 func (*BizCall) Descriptor() ([]byte, []int) {
-	return file_oipivot_audit_v1_audit_proto_rawDescGZIP(), []int{0}
+	return file_base_audit_v1_message_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *BizCall) GetService() string {
@@ -94,7 +94,7 @@ type Change struct {
 
 func (x *Change) Reset() {
 	*x = Change{}
-	mi := &file_oipivot_audit_v1_audit_proto_msgTypes[1]
+	mi := &file_base_audit_v1_message_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -106,7 +106,7 @@ func (x *Change) String() string {
 func (*Change) ProtoMessage() {}
 
 func (x *Change) ProtoReflect() protoreflect.Message {
-	mi := &file_oipivot_audit_v1_audit_proto_msgTypes[1]
+	mi := &file_base_audit_v1_message_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -119,7 +119,7 @@ func (x *Change) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Change.ProtoReflect.Descriptor instead.
 func (*Change) Descriptor() ([]byte, []int) {
-	return file_oipivot_audit_v1_audit_proto_rawDescGZIP(), []int{1}
+	return file_base_audit_v1_message_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Change) GetPath() string {
@@ -204,7 +204,7 @@ type RecordEnvelope struct {
 
 func (x *RecordEnvelope) Reset() {
 	*x = RecordEnvelope{}
-	mi := &file_oipivot_audit_v1_audit_proto_msgTypes[2]
+	mi := &file_base_audit_v1_message_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -216,7 +216,7 @@ func (x *RecordEnvelope) String() string {
 func (*RecordEnvelope) ProtoMessage() {}
 
 func (x *RecordEnvelope) ProtoReflect() protoreflect.Message {
-	mi := &file_oipivot_audit_v1_audit_proto_msgTypes[2]
+	mi := &file_base_audit_v1_message_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -229,7 +229,7 @@ func (x *RecordEnvelope) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordEnvelope.ProtoReflect.Descriptor instead.
 func (*RecordEnvelope) Descriptor() ([]byte, []int) {
-	return file_oipivot_audit_v1_audit_proto_rawDescGZIP(), []int{2}
+	return file_base_audit_v1_message_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *RecordEnvelope) GetEventId() string {
@@ -430,7 +430,7 @@ type AppendRecordsRequest struct {
 
 func (x *AppendRecordsRequest) Reset() {
 	*x = AppendRecordsRequest{}
-	mi := &file_oipivot_audit_v1_audit_proto_msgTypes[3]
+	mi := &file_base_audit_v1_message_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -442,7 +442,7 @@ func (x *AppendRecordsRequest) String() string {
 func (*AppendRecordsRequest) ProtoMessage() {}
 
 func (x *AppendRecordsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_oipivot_audit_v1_audit_proto_msgTypes[3]
+	mi := &file_base_audit_v1_message_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -455,7 +455,7 @@ func (x *AppendRecordsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AppendRecordsRequest.ProtoReflect.Descriptor instead.
 func (*AppendRecordsRequest) Descriptor() ([]byte, []int) {
-	return file_oipivot_audit_v1_audit_proto_rawDescGZIP(), []int{3}
+	return file_base_audit_v1_message_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *AppendRecordsRequest) GetItems() []*RecordEnvelope {
@@ -479,7 +479,7 @@ type RecordReceipt struct {
 
 func (x *RecordReceipt) Reset() {
 	*x = RecordReceipt{}
-	mi := &file_oipivot_audit_v1_audit_proto_msgTypes[4]
+	mi := &file_base_audit_v1_message_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -491,7 +491,7 @@ func (x *RecordReceipt) String() string {
 func (*RecordReceipt) ProtoMessage() {}
 
 func (x *RecordReceipt) ProtoReflect() protoreflect.Message {
-	mi := &file_oipivot_audit_v1_audit_proto_msgTypes[4]
+	mi := &file_base_audit_v1_message_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -504,7 +504,7 @@ func (x *RecordReceipt) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordReceipt.ProtoReflect.Descriptor instead.
 func (*RecordReceipt) Descriptor() ([]byte, []int) {
-	return file_oipivot_audit_v1_audit_proto_rawDescGZIP(), []int{4}
+	return file_base_audit_v1_message_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *RecordReceipt) GetSourceDeploymentId() string {
@@ -551,7 +551,7 @@ type AppendRecordsResponse struct {
 
 func (x *AppendRecordsResponse) Reset() {
 	*x = AppendRecordsResponse{}
-	mi := &file_oipivot_audit_v1_audit_proto_msgTypes[5]
+	mi := &file_base_audit_v1_message_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -563,7 +563,7 @@ func (x *AppendRecordsResponse) String() string {
 func (*AppendRecordsResponse) ProtoMessage() {}
 
 func (x *AppendRecordsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_oipivot_audit_v1_audit_proto_msgTypes[5]
+	mi := &file_base_audit_v1_message_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -576,7 +576,7 @@ func (x *AppendRecordsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AppendRecordsResponse.ProtoReflect.Descriptor instead.
 func (*AppendRecordsResponse) Descriptor() ([]byte, []int) {
-	return file_oipivot_audit_v1_audit_proto_rawDescGZIP(), []int{5}
+	return file_base_audit_v1_message_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *AppendRecordsResponse) GetData() []*RecordReceipt {
@@ -597,7 +597,7 @@ type ConfirmSoftDeleteRequest struct {
 
 func (x *ConfirmSoftDeleteRequest) Reset() {
 	*x = ConfirmSoftDeleteRequest{}
-	mi := &file_oipivot_audit_v1_audit_proto_msgTypes[6]
+	mi := &file_base_audit_v1_message_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -609,7 +609,7 @@ func (x *ConfirmSoftDeleteRequest) String() string {
 func (*ConfirmSoftDeleteRequest) ProtoMessage() {}
 
 func (x *ConfirmSoftDeleteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_oipivot_audit_v1_audit_proto_msgTypes[6]
+	mi := &file_base_audit_v1_message_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -622,7 +622,7 @@ func (x *ConfirmSoftDeleteRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfirmSoftDeleteRequest.ProtoReflect.Descriptor instead.
 func (*ConfirmSoftDeleteRequest) Descriptor() ([]byte, []int) {
-	return file_oipivot_audit_v1_audit_proto_rawDescGZIP(), []int{6}
+	return file_base_audit_v1_message_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ConfirmSoftDeleteRequest) GetSourceService() string {
@@ -693,7 +693,7 @@ type RecordSummary struct {
 
 func (x *RecordSummary) Reset() {
 	*x = RecordSummary{}
-	mi := &file_oipivot_audit_v1_audit_proto_msgTypes[7]
+	mi := &file_base_audit_v1_message_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -705,7 +705,7 @@ func (x *RecordSummary) String() string {
 func (*RecordSummary) ProtoMessage() {}
 
 func (x *RecordSummary) ProtoReflect() protoreflect.Message {
-	mi := &file_oipivot_audit_v1_audit_proto_msgTypes[7]
+	mi := &file_base_audit_v1_message_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -718,7 +718,7 @@ func (x *RecordSummary) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordSummary.ProtoReflect.Descriptor instead.
 func (*RecordSummary) Descriptor() ([]byte, []int) {
-	return file_oipivot_audit_v1_audit_proto_rawDescGZIP(), []int{7}
+	return file_base_audit_v1_message_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *RecordSummary) GetRecordId() string {
@@ -930,7 +930,7 @@ type GetPayloadRequest struct {
 
 func (x *GetPayloadRequest) Reset() {
 	*x = GetPayloadRequest{}
-	mi := &file_oipivot_audit_v1_audit_proto_msgTypes[8]
+	mi := &file_base_audit_v1_message_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -942,7 +942,7 @@ func (x *GetPayloadRequest) String() string {
 func (*GetPayloadRequest) ProtoMessage() {}
 
 func (x *GetPayloadRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_oipivot_audit_v1_audit_proto_msgTypes[8]
+	mi := &file_base_audit_v1_message_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -955,7 +955,7 @@ func (x *GetPayloadRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPayloadRequest.ProtoReflect.Descriptor instead.
 func (*GetPayloadRequest) Descriptor() ([]byte, []int) {
-	return file_oipivot_audit_v1_audit_proto_rawDescGZIP(), []int{8}
+	return file_base_audit_v1_message_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *GetPayloadRequest) GetRecordId() string {
@@ -1000,7 +1000,7 @@ type GetPayloadResponse struct {
 
 func (x *GetPayloadResponse) Reset() {
 	*x = GetPayloadResponse{}
-	mi := &file_oipivot_audit_v1_audit_proto_msgTypes[9]
+	mi := &file_base_audit_v1_message_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1012,7 +1012,7 @@ func (x *GetPayloadResponse) String() string {
 func (*GetPayloadResponse) ProtoMessage() {}
 
 func (x *GetPayloadResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_oipivot_audit_v1_audit_proto_msgTypes[9]
+	mi := &file_base_audit_v1_message_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1025,7 +1025,7 @@ func (x *GetPayloadResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPayloadResponse.ProtoReflect.Descriptor instead.
 func (*GetPayloadResponse) Descriptor() ([]byte, []int) {
-	return file_oipivot_audit_v1_audit_proto_rawDescGZIP(), []int{9}
+	return file_base_audit_v1_message_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *GetPayloadResponse) GetMetadata() *RecordSummary {
@@ -1079,7 +1079,7 @@ type ConfirmSoftDeleteResponse struct {
 
 func (x *ConfirmSoftDeleteResponse) Reset() {
 	*x = ConfirmSoftDeleteResponse{}
-	mi := &file_oipivot_audit_v1_audit_proto_msgTypes[10]
+	mi := &file_base_audit_v1_message_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1091,7 +1091,7 @@ func (x *ConfirmSoftDeleteResponse) String() string {
 func (*ConfirmSoftDeleteResponse) ProtoMessage() {}
 
 func (x *ConfirmSoftDeleteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_oipivot_audit_v1_audit_proto_msgTypes[10]
+	mi := &file_base_audit_v1_message_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1104,7 +1104,7 @@ func (x *ConfirmSoftDeleteResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfirmSoftDeleteResponse.ProtoReflect.Descriptor instead.
 func (*ConfirmSoftDeleteResponse) Descriptor() ([]byte, []int) {
-	return file_oipivot_audit_v1_audit_proto_rawDescGZIP(), []int{10}
+	return file_base_audit_v1_message_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ConfirmSoftDeleteResponse) GetData() []*RecordReceipt {
@@ -1114,11 +1114,11 @@ func (x *ConfirmSoftDeleteResponse) GetData() []*RecordReceipt {
 	return nil
 }
 
-var File_oipivot_audit_v1_audit_proto protoreflect.FileDescriptor
+var File_base_audit_v1_message_proto protoreflect.FileDescriptor
 
-const file_oipivot_audit_v1_audit_proto_rawDesc = "" +
+const file_base_audit_v1_message_proto_rawDesc = "" +
 	"\n" +
-	"\x1coipivot/audit/v1/audit.proto\x12\x10oipivot.audit.v1\"R\n" +
+	"\x1bbase/audit/v1/message.proto\x12\x10oipivot.audit.v1\"R\n" +
 	"\aBizCall\x12\x18\n" +
 	"\aservice\x18\x01 \x01(\tR\aservice\x12\x16\n" +
 	"\x06action\x18\x02 \x01(\tR\x06action\x12\x15\n" +
@@ -1249,27 +1249,22 @@ const file_oipivot_audit_v1_audit_proto_rawDesc = "" +
 	"\x0eomitted_fields\x18\x05 \x03(\tR\romittedFields\x124\n" +
 	"\x16payload_schema_version\x18\x06 \x01(\x05R\x14payloadSchemaVersion\"P\n" +
 	"\x19ConfirmSoftDeleteResponse\x123\n" +
-	"\x04data\x18\x01 \x03(\v2\x1f.oipivot.audit.v1.RecordReceiptR\x04data2\xb7\x02\n" +
-	"\fAuditService\x12`\n" +
-	"\rAppendRecords\x12&.oipivot.audit.v1.AppendRecordsRequest\x1a'.oipivot.audit.v1.AppendRecordsResponse\x12l\n" +
-	"\x11ConfirmSoftDelete\x12*.oipivot.audit.v1.ConfirmSoftDeleteRequest\x1a+.oipivot.audit.v1.ConfirmSoftDeleteResponse\x12W\n" +
-	"\n" +
-	"GetPayload\x12#.oipivot.audit.v1.GetPayloadRequest\x1a$.oipivot.audit.v1.GetPayloadResponseB;Z9github.com/zhixingdx/oipivot-api/oipivot/audit/v1;auditv1b\x06proto3"
+	"\x04data\x18\x01 \x03(\v2\x1f.oipivot.audit.v1.RecordReceiptR\x04dataB8Z6github.com/zhixingdx/oipivot-api/base/audit/v1;auditv1b\x06proto3"
 
 var (
-	file_oipivot_audit_v1_audit_proto_rawDescOnce sync.Once
-	file_oipivot_audit_v1_audit_proto_rawDescData []byte
+	file_base_audit_v1_message_proto_rawDescOnce sync.Once
+	file_base_audit_v1_message_proto_rawDescData []byte
 )
 
-func file_oipivot_audit_v1_audit_proto_rawDescGZIP() []byte {
-	file_oipivot_audit_v1_audit_proto_rawDescOnce.Do(func() {
-		file_oipivot_audit_v1_audit_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_oipivot_audit_v1_audit_proto_rawDesc), len(file_oipivot_audit_v1_audit_proto_rawDesc)))
+func file_base_audit_v1_message_proto_rawDescGZIP() []byte {
+	file_base_audit_v1_message_proto_rawDescOnce.Do(func() {
+		file_base_audit_v1_message_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_base_audit_v1_message_proto_rawDesc), len(file_base_audit_v1_message_proto_rawDesc)))
 	})
-	return file_oipivot_audit_v1_audit_proto_rawDescData
+	return file_base_audit_v1_message_proto_rawDescData
 }
 
-var file_oipivot_audit_v1_audit_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
-var file_oipivot_audit_v1_audit_proto_goTypes = []any{
+var file_base_audit_v1_message_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_base_audit_v1_message_proto_goTypes = []any{
 	(*BizCall)(nil),                   // 0: oipivot.audit.v1.BizCall
 	(*Change)(nil),                    // 1: oipivot.audit.v1.Change
 	(*RecordEnvelope)(nil),            // 2: oipivot.audit.v1.RecordEnvelope
@@ -1282,51 +1277,45 @@ var file_oipivot_audit_v1_audit_proto_goTypes = []any{
 	(*GetPayloadResponse)(nil),        // 9: oipivot.audit.v1.GetPayloadResponse
 	(*ConfirmSoftDeleteResponse)(nil), // 10: oipivot.audit.v1.ConfirmSoftDeleteResponse
 }
-var file_oipivot_audit_v1_audit_proto_depIdxs = []int32{
-	0,  // 0: oipivot.audit.v1.RecordEnvelope.biz_call:type_name -> oipivot.audit.v1.BizCall
-	1,  // 1: oipivot.audit.v1.RecordEnvelope.changes:type_name -> oipivot.audit.v1.Change
-	2,  // 2: oipivot.audit.v1.AppendRecordsRequest.items:type_name -> oipivot.audit.v1.RecordEnvelope
-	4,  // 3: oipivot.audit.v1.AppendRecordsResponse.data:type_name -> oipivot.audit.v1.RecordReceipt
-	0,  // 4: oipivot.audit.v1.RecordSummary.biz_call:type_name -> oipivot.audit.v1.BizCall
-	7,  // 5: oipivot.audit.v1.GetPayloadResponse.metadata:type_name -> oipivot.audit.v1.RecordSummary
-	1,  // 6: oipivot.audit.v1.GetPayloadResponse.changes:type_name -> oipivot.audit.v1.Change
-	4,  // 7: oipivot.audit.v1.ConfirmSoftDeleteResponse.data:type_name -> oipivot.audit.v1.RecordReceipt
-	3,  // 8: oipivot.audit.v1.AuditService.AppendRecords:input_type -> oipivot.audit.v1.AppendRecordsRequest
-	6,  // 9: oipivot.audit.v1.AuditService.ConfirmSoftDelete:input_type -> oipivot.audit.v1.ConfirmSoftDeleteRequest
-	8,  // 10: oipivot.audit.v1.AuditService.GetPayload:input_type -> oipivot.audit.v1.GetPayloadRequest
-	5,  // 11: oipivot.audit.v1.AuditService.AppendRecords:output_type -> oipivot.audit.v1.AppendRecordsResponse
-	10, // 12: oipivot.audit.v1.AuditService.ConfirmSoftDelete:output_type -> oipivot.audit.v1.ConfirmSoftDeleteResponse
-	9,  // 13: oipivot.audit.v1.AuditService.GetPayload:output_type -> oipivot.audit.v1.GetPayloadResponse
-	11, // [11:14] is the sub-list for method output_type
-	8,  // [8:11] is the sub-list for method input_type
-	8,  // [8:8] is the sub-list for extension type_name
-	8,  // [8:8] is the sub-list for extension extendee
-	0,  // [0:8] is the sub-list for field type_name
+var file_base_audit_v1_message_proto_depIdxs = []int32{
+	0, // 0: oipivot.audit.v1.RecordEnvelope.biz_call:type_name -> oipivot.audit.v1.BizCall
+	1, // 1: oipivot.audit.v1.RecordEnvelope.changes:type_name -> oipivot.audit.v1.Change
+	2, // 2: oipivot.audit.v1.AppendRecordsRequest.items:type_name -> oipivot.audit.v1.RecordEnvelope
+	4, // 3: oipivot.audit.v1.AppendRecordsResponse.data:type_name -> oipivot.audit.v1.RecordReceipt
+	0, // 4: oipivot.audit.v1.RecordSummary.biz_call:type_name -> oipivot.audit.v1.BizCall
+	7, // 5: oipivot.audit.v1.GetPayloadResponse.metadata:type_name -> oipivot.audit.v1.RecordSummary
+	1, // 6: oipivot.audit.v1.GetPayloadResponse.changes:type_name -> oipivot.audit.v1.Change
+	4, // 7: oipivot.audit.v1.ConfirmSoftDeleteResponse.data:type_name -> oipivot.audit.v1.RecordReceipt
+	8, // [8:8] is the sub-list for method output_type
+	8, // [8:8] is the sub-list for method input_type
+	8, // [8:8] is the sub-list for extension type_name
+	8, // [8:8] is the sub-list for extension extendee
+	0, // [0:8] is the sub-list for field type_name
 }
 
-func init() { file_oipivot_audit_v1_audit_proto_init() }
-func file_oipivot_audit_v1_audit_proto_init() {
-	if File_oipivot_audit_v1_audit_proto != nil {
+func init() { file_base_audit_v1_message_proto_init() }
+func file_base_audit_v1_message_proto_init() {
+	if File_base_audit_v1_message_proto != nil {
 		return
 	}
-	file_oipivot_audit_v1_audit_proto_msgTypes[1].OneofWrappers = []any{}
-	file_oipivot_audit_v1_audit_proto_msgTypes[2].OneofWrappers = []any{}
-	file_oipivot_audit_v1_audit_proto_msgTypes[7].OneofWrappers = []any{}
+	file_base_audit_v1_message_proto_msgTypes[1].OneofWrappers = []any{}
+	file_base_audit_v1_message_proto_msgTypes[2].OneofWrappers = []any{}
+	file_base_audit_v1_message_proto_msgTypes[7].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_oipivot_audit_v1_audit_proto_rawDesc), len(file_oipivot_audit_v1_audit_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_base_audit_v1_message_proto_rawDesc), len(file_base_audit_v1_message_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   11,
 			NumExtensions: 0,
-			NumServices:   1,
+			NumServices:   0,
 		},
-		GoTypes:           file_oipivot_audit_v1_audit_proto_goTypes,
-		DependencyIndexes: file_oipivot_audit_v1_audit_proto_depIdxs,
-		MessageInfos:      file_oipivot_audit_v1_audit_proto_msgTypes,
+		GoTypes:           file_base_audit_v1_message_proto_goTypes,
+		DependencyIndexes: file_base_audit_v1_message_proto_depIdxs,
+		MessageInfos:      file_base_audit_v1_message_proto_msgTypes,
 	}.Build()
-	File_oipivot_audit_v1_audit_proto = out.File
-	file_oipivot_audit_v1_audit_proto_goTypes = nil
-	file_oipivot_audit_v1_audit_proto_depIdxs = nil
+	File_base_audit_v1_message_proto = out.File
+	file_base_audit_v1_message_proto_goTypes = nil
+	file_base_audit_v1_message_proto_depIdxs = nil
 }

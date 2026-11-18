@@ -2,15 +2,7 @@ syntax = "proto3";
 
 package oipivot.audit.v1;
 
-option go_package = "github.com/zhixingdx/oipivot-api/oipivot/audit/v1;auditv1";
-
-// AuditService accepts authenticated project producers. Credentials bind the
-// project, tenant, service and logical deployment to the transport.
-service AuditService {
-  rpc AppendRecords(AppendRecordsRequest) returns (AppendRecordsResponse);
-  rpc ConfirmSoftDelete(ConfirmSoftDeleteRequest) returns (ConfirmSoftDeleteResponse);
-  rpc GetPayload(GetPayloadRequest) returns (GetPayloadResponse);
-}
+option go_package = "github.com/zhixingdx/oipivot-api/base/audit/v1;auditv1";
 
 message BizCall {
   string service = 1;

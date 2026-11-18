@@ -4,7 +4,16 @@ modules:
 lint:
   use:
     - STANDARD
+  ignore_only:
+    PACKAGE_DIRECTORY_MATCH:
+      - base/audit/v1/message.proto
+      - base/audit/v1/service.proto
   disallow_comment_ignores: true
 breaking:
   use:
     - FILE
+    - PACKAGE
+  # v0.2.0 将已发布的单文件拆成两份。继续逐包检查原有字段、服务及方法。
+  ignore_only:
+    FILE_NO_DELETE:
+      - oipivot/audit/v1/audit.proto
