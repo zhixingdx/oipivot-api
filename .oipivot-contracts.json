@@ -1,0 +1,18 @@
+{
+  "files": [
+    "buf.gen.yaml",
+    "buf.yaml",
+    "go.mod",
+    "go.sum",
+    "oipivot/audit/v1/audit.pb.go",
+    "oipivot/audit/v1/audit.proto",
+    "oipivot/audit/v1/audit_grpc.pb.go"
+  ],
+  "sha256": "7af2a5d48313bb13bd17a6f4257159ea024dd2fe141fa0f250e4525272e3d3d2",
+  "source": "3066748cf0a38c653bd80e196ffc69d9768b52a0",
+  "toolchain": {
+    "BUF_VERSION": "1.57.2",
+    "PROTOC_GEN_GO_GRPC_VERSION": "1.6.2",
+    "PROTOC_GEN_GO_VERSION": "1.36.11"
+  }
+}

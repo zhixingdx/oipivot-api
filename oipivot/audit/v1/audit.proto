@@ -1,0 +1,149 @@
+syntax = "proto3";
+
+package oipivot.audit.v1;
+
+option go_package = "github.com/zhixingdx/oipivot-api/oipivot/audit/v1;auditv1";
+
+// AuditService accepts authenticated project producers. Credentials bind the
+// project, tenant, service and logical deployment to the transport.
+service AuditService {
+  rpc AppendRecords(AppendRecordsRequest) returns (AppendRecordsResponse);
+  rpc ConfirmSoftDelete(ConfirmSoftDeleteRequest) returns (ConfirmSoftDeleteResponse);
+  rpc GetPayload(GetPayloadRequest) returns (GetPayloadResponse);
+}
+
+message BizCall {
+  string service = 1;
+  string action = 2;
+  string biz_id = 3;
+}
+
+message Change {
+  string path = 1;
+  bool before_present = 2;
+  optional string before = 3;
+  bool after_present = 4;
+  optional string after = 5;
+}
+
+message RecordEnvelope {
+  string event_id = 1;
+  string operation_id = 2;
+  // 稳定逻辑部署来源，扩缩容和重启保持不变；不是 Pod/进程实例 ID。
+  string source_deployment_id = 3;
+  BizCall biz_call = 4;
+  string actor_id = 5;
+  string actor_type = 6;
+  string outcome = 7;
+  // 业务发生时间，Unix 毫秒。
+  int64 occurred_at = 8;
+  string trace_id = 9;
+  string span_id = 10;
+  // 采集与留存策略版本。
+  int32 policy_version = 11;
+  // 事件信封结构版本。
+  int32 schema_version = 12;
+  string category = 13;
+  string capture_mode = 14;
+  string delete_mode = 15;
+  string detail = 16;
+  repeated Change changes = 17;
+  string snapshot = 18;
+  repeated string omitted_fields = 19;
+  // 客户端报告的单个 IP；仅可信代理保证来源，不用于授权。
+  optional string client_ip = 20;
+  // 客户端自报 User-Agent，不用于授权。
+  optional string user_agent = 21;
+  // 客户端自报终端标识，不是用户身份。
+  optional string client_id = 22;
+  // 业务渠道，与终端 Channel 独立。
+  optional string realm = 23;
+  // 客户端自报终端渠道，如 web、ios。
+  optional string channel = 24;
+  // 客户端自报平台类型。
+  optional string platform = 25;
+  // 生产者本地配置的来源环境。
+  optional string source_environment = 26;
+  // 生产者本地配置的服务版本。
+  optional string service_version = 27;
+}
+
+message AppendRecordsRequest { repeated RecordEnvelope items = 1; }
+
+message RecordReceipt {
+  // 稳定逻辑部署来源，扩缩容和重启保持不变；不是 Pod/进程实例 ID。
+  string source_deployment_id = 1;
+  string event_id = 2;
+  string record_id = 3;
+  string status = 4;
+  string storage_target = 5;
+}
+
+message AppendRecordsResponse { repeated RecordReceipt data = 1; }
+
+message ConfirmSoftDeleteRequest {
+  string source_service = 1;
+  string source_deployment_id = 2;
+  repeated string record_ids = 3;
+}
+
+message RecordSummary {
+  string record_id = 1;
+  string tenant_id = 2;
+  string event_id = 3;
+  string operation_id = 4;
+  // 稳定逻辑部署来源，扩缩容和重启保持不变；不是 Pod/进程实例 ID。
+  string source_deployment_id = 5;
+  BizCall biz_call = 6;
+  string actor_id = 7;
+  string actor_type = 8;
+  string outcome = 9;
+  string category = 10;
+  string capture_mode = 11;
+  string delete_mode = 12;
+  int64 occurred_at = 13;
+  // 数据库入库时间，Unix 毫秒；底层 CreateTime 为秒精度。
+  int64 stored_at = 14;
+  int64 expires_at = 15;
+  string trace_id = 16;
+  string span_id = 17;
+  int32 policy_version = 18;
+  int32 schema_version = 19;
+  // 客户端报告的单个 IP；仅可信代理保证来源，不用于授权。
+  optional string client_ip = 20;
+  // 客户端自报 User-Agent，不用于授权。
+  optional string user_agent = 21;
+  // 客户端自报终端标识，不是用户身份。
+  optional string client_id = 22;
+  // 业务渠道，与终端 Channel 独立。
+  optional string realm = 23;
+  // 客户端自报终端渠道，如 web、ios。
+  optional string channel = 24;
+  // 客户端自报平台类型。
+  optional string platform = 25;
+  // 生产者本地配置的来源环境。
+  optional string source_environment = 26;
+  // 生产者本地配置的服务版本。
+  optional string service_version = 27;
+  // 仅删除前快照返回 archived 或 deletion_confirmed，其他事件为空。
+  string soft_delete_status = 28;
+}
+
+message GetPayloadRequest {
+  string record_id = 1;
+  string purpose = 2;
+  string source_service = 3;
+  // 稳定逻辑部署来源，扩缩容和重启保持不变；不是 Pod/进程实例 ID。
+  string source_deployment_id = 4;
+}
+
+message GetPayloadResponse {
+  RecordSummary metadata = 1;
+  string kind = 2;
+  repeated Change changes = 3;
+  string snapshot = 4;
+  repeated string omitted_fields = 5;
+  int32 payload_schema_version = 6;
+}
+
+message ConfirmSoftDeleteResponse { repeated RecordReceipt data = 1; }
