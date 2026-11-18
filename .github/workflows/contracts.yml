@@ -3,7 +3,9 @@ on:
   push:
     branches: [main, sync/contracts]
     tags: ['v*']
+  # 同步提案已在其专属分支上完整验证；公开仓本地维护的文件另做 PR 检查。
   pull_request:
+    paths: ['README.md', '.github/**']
   workflow_dispatch:
 permissions:
   contents: read
