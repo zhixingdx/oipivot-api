@@ -10,8 +10,8 @@
     "go.mod",
     "go.sum"
   ],
-  "sha256": "4fc02e97b8a4a7e2cb2b2512511bae817ff45ad8b98bd940c8ff1f6d3e19c4e1",
-  "source": "d179505dd8a7c6f925fde14ca5923950a6bcd58d",
+  "sha256": "3e557fd1fa2e3a872a3ece92da58aa4cbb7c24438b7362ad7131a9f66dfaf88f",
+  "source": "0501c4cb2ae27ae411211a973fffde32ffacfbde",
   "toolchain": {
     "BUF_VERSION": "1.57.2",
     "PROTOC_GEN_GO_GRPC_VERSION": "1.6.2",
