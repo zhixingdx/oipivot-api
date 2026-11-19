@@ -28,8 +28,9 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 //
-// AuditService accepts authenticated project producers. Credentials bind the
-// project, tenant, service and logical deployment to the transport.
+// AuditService serves backend producers inside one project. Trusted internal RPC
+// carries the resource tenant in metadata. Deployments may bind producers to
+// workload certificates with mTLS. Platform and tenant frontends use HTTP.
 type AuditServiceClient interface {
 	AppendRecords(ctx context.Context, in *AppendRecordsRequest, opts ...grpc.CallOption) (*AppendRecordsResponse, error)
 	ConfirmSoftDelete(ctx context.Context, in *ConfirmSoftDeleteRequest, opts ...grpc.CallOption) (*ConfirmSoftDeleteResponse, error)
@@ -78,8 +79,9 @@ func (c *auditServiceClient) GetPayload(ctx context.Context, in *GetPayloadReque
 // All implementations must embed UnimplementedAuditServiceServer
 // for forward compatibility.
 //
-// AuditService accepts authenticated project producers. Credentials bind the
-// project, tenant, service and logical deployment to the transport.
+// AuditService serves backend producers inside one project. Trusted internal RPC
+// carries the resource tenant in metadata. Deployments may bind producers to
+// workload certificates with mTLS. Platform and tenant frontends use HTTP.
 type AuditServiceServer interface {
 	AppendRecords(context.Context, *AppendRecordsRequest) (*AppendRecordsResponse, error)
 	ConfirmSoftDelete(context.Context, *ConfirmSoftDeleteRequest) (*ConfirmSoftDeleteResponse, error)

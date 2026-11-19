@@ -6,8 +6,9 @@ option go_package = "github.com/zhixingdx/oipivot-api/base/audit/v1;auditv1";
 
 import "base/audit/v1/message.proto";
 
-// AuditService accepts authenticated project producers. Credentials bind the
-// project, tenant, service and logical deployment to the transport.
+// AuditService serves backend producers inside one project. Trusted internal RPC
+// carries the resource tenant in metadata. Deployments may bind producers to
+// workload certificates with mTLS. Platform and tenant frontends use HTTP.
 service AuditService {
   rpc AppendRecords(AppendRecordsRequest) returns (AppendRecordsResponse);
   rpc ConfirmSoftDelete(ConfirmSoftDeleteRequest) returns (ConfirmSoftDeleteResponse);
